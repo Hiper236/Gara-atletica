@@ -3,8 +3,9 @@
 public class Main {
     public static void main(String[] args) {
         System.out.println("Gara Atletica");
-        Atleta a1 = new Atleta(67, "Aureliano");
-        Atleta a2 = new Atleta(68, "Filippo");
+        Giudice g = new Giudice();
+        Atleta a1 = new Atleta(67, "Danil", g);
+        Atleta a2 = new Atleta(68, "Marco", g);
         Thread ta2 = new Thread(a2);
         ta2.setPriority(Thread.MAX_PRIORITY);
         Thread ta1 = new Thread(a1);

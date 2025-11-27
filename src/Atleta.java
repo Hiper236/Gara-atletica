@@ -6,10 +6,11 @@ public class Atleta implements Runnable {
     double tempo = 0;
     double metri = 0;
     final double LUNGHEZZAGARA = 50;
-
-    public Atleta(int pNumero, String pNome) {
+    Giudice giudice;
+    public Atleta(int pNumero, String pNome, Giudice pGiudice) {
         numero = pNumero;
         nome = pNome;
+
     }
 
     @Override
@@ -21,6 +22,7 @@ public class Atleta implements Runnable {
             try { Thread.currentThread().sleep(1000); }
             catch (InterruptedException e) { System.err.println("Errore sleep"); }
         }
+        giudice.verifica(nome);
         System.out.println(nome + " è al Traguardo");
     }
 }
