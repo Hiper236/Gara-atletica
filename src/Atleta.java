@@ -1,5 +1,4 @@
 import java.util.Random;
-
 public class Atleta implements Runnable {
     int numero;
     String nome;
@@ -18,11 +17,11 @@ public class Atleta implements Runnable {
         Random metriPercorsi = new Random();
         while(metri <= LUNGHEZZAGARA) {
             metri += metriPercorsi.nextDouble(10);
-            System.out.println(nome + " Metri Percorsi: " + metri);
+            System.out.printf(nome + " Metri Percorsi %.2f: \n", this.metri);
             try { Thread.currentThread().sleep(1000); }
             catch (InterruptedException e) { System.err.println("Errore sleep"); }
         }
-        giudice.verifica(nome);
         System.out.println(nome + " è al Traguardo");
+        giudice.finito(this);
     }
 }

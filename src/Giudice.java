@@ -5,10 +5,10 @@ public class Giudice extends Thread {
     static int numero;
     static ArrayList<Atleta> Atleti = new ArrayList<>();
     static ArrayList<Atleta> Podio = new ArrayList<>();
-//      static ArrayList<Thread> threadAtleti = new ArrayList<>();
+    static GestoreFile gFile = new GestoreFile();
 
 
-    private Giudice() { }
+    public Giudice() { }
 
 
     public static void aggiungimi(Atleta a) {
@@ -18,7 +18,10 @@ public class Giudice extends Thread {
 
     public static void finito(Atleta a) {
         Podio.add(a);
-        if (Podio.size() == Atleti.size()) Giudice.fineGara();
+        System.out.println(Atleti);
+        System.out.println(Podio);
+        if (Podio.size() == (Atleti.size()))
+            Giudice.fineGara();
     }
 
 
@@ -26,7 +29,10 @@ public class Giudice extends Thread {
         System.out.println("Gara Terminata! Ecco il Podio:");
         System.out.println("Primo in classifica: " + Podio.get(0).nome);
         System.out.println("Secondo in classifica: " + Podio.get(1).nome);
-        System.out.println("Terzo in classifica: " + Podio.get(2).nome);
+        //System.out.println("Terzo in classifica: " + Podio.get(2).nome);
+        gFile.scriviFile("blah blah blah");
+        System.out.println("-----------------------");
+        gFile.leggiFile();
     }
 
 
@@ -43,8 +49,6 @@ public class Giudice extends Thread {
 
         for (Atleta a : Atleti) {
             (new Thread(a)).start();
-//              threadAtleti.add(new Thread(a));
-//              threadAtleti.getLast().start();
         }
     }
 }
